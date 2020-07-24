@@ -1,7 +1,29 @@
+
 [package]
-name = "lattice_boltzmann"
-version = "0.1.0"
-authors = ["Florian"]
+name = "new"
+authors = ["Florian Rohm <florian.rohm@tngtech.com>"]
+version = "0.0.0"
+edition = "2018"
+
+
+[[bin]]
+path = "src/unsteady.rs"
+name = "unsteady"
+
+[[bin]]
+path = "src/unsteady_gen.rs"
+name = "unsteady_gen"
+
 
 [dependencies]
-ndarray = "0.10.0"
+ndarray = "0.13.0"
+
+[profile.release]
+debug = true
+lto = true
+opt-level=3
+panic='abort'
+codegen-units=1
+debug-assertions = false
+incremental = false
+overflow-checks = false
