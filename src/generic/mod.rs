@@ -405,7 +405,7 @@ where
     fn propagate_pull_inner(mut self) -> Self {
         let source = self.lattice.windows((3, 3));
         let mut target = self.tmp_lattice.slice_mut(inner_slice!(self));
-        Zip::from(&mut target).and(source).apply(|tar, src| {
+        Zip::from(&mut target).and(source).for_each(|tar, src| {
             for i_pop in 0..9 {
                 let c = C_INDEX[i_pop];
                 let vel = src[[c[0], c[1]]].velocities[i_pop];

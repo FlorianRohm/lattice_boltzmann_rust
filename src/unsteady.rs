@@ -3,7 +3,6 @@
     clippy::nursery,
 )]
 
-use ndarray::Ix2;
 mod lbm;
 mod generic;
 
@@ -65,12 +64,11 @@ pub fn construct_sim(settings: &Settings) -> Simulation {
         }
     });
 
-    let mut tmp_lattice = unsafe { Array::<Node, Ix2>::uninitialized(shape) };
-    tmp_lattice.assign(&lattice);
-
+    let tmp_lattice = lattice.clone();
+    
     Simulation {
-        lattice,
         tmp_lattice,
+        lattice,
         l_x: settings.l_x,
         l_y: settings.l_y,
     }
