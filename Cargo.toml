@@ -16,7 +16,7 @@ name = "unsteady_gen"
 
 
 [dependencies]
-ndarray = "0.13.0"
+ndarray = "0.15.1"
 
 [profile.release]
 debug = true
